@@ -16,7 +16,7 @@ var api = new ParseServer({
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'peoplechallengeID89i999999',
   masterKey: process.env.MASTER_KEY || 'peoplechallengeKeyjlouoiuojno', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'http://peoplechallenge.herokuapp.com/people',  // Don't forget to change to https if needed
+  serverURL: process.env.SERVER_URL || 'http://peoplechallenge.herokuapp.com',  // Don't forget to change to https if needed
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
@@ -43,6 +43,10 @@ app.get('/', function(req, res) {
 // Remove this before launching your app
 app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
+});
+
+app.get('/people', function(req, res){
+  res.status(200).send('Hello');
 });
 
 var port = process.env.PORT || 1337;
